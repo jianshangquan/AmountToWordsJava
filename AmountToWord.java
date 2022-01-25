@@ -9,7 +9,7 @@ abstract class AmountToWord {
 
     }
 
-    static AmountToWord factory(AmountConvertion convertion) throws Exception{
+    static AmountToWord getConverter(AmountConvertion convertion) throws Exception{
         switch (convertion){
             case BURMESE: {
                 return new BurmeseAmountToWord();
@@ -26,14 +26,25 @@ abstract class AmountToWord {
         }
     }
 
+    static AmountToWord getConverter(int amt, AmountConvertion convertion) throws Exception{
+        return getConverter(convertion).setAmount(amt);
+    }
+    static AmountToWord getConverter(double amt, AmountConvertion convertion) throws Exception{
+        return getConverter(convertion).setAmount(amt);
+    }
+    static AmountToWord getConverter(BigDecimal amt, AmountConvertion convertion) throws Exception{
+        return getConverter(convertion).setAmount(amt);
+    }
+
+
     static String convertTo(int amt, AmountConvertion convertion) throws Exception{
-        return factory(convertion).setAmount(amt).convertInLetter();
+        return getConverter(convertion).setAmount(amt).convertInLetter();
     }
     static String convertTo(double amt, AmountConvertion convertion) throws Exception{
-        return factory(convertion).setAmount(amt).convertInLetter();
+        return getConverter(convertion).setAmount(amt).convertInLetter();
     }
     static String convertTo(BigDecimal amt, AmountConvertion convertion) throws Exception{
-        return factory(convertion).setAmount(amt).convertInLetter();
+        return getConverter(convertion).setAmount(amt).convertInLetter();
     }
 
 
