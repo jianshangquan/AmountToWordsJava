@@ -3,8 +3,8 @@ package com.jiantech.AmountToWords;
 import java.math.BigDecimal;
 
 public class Main {
-    public static void main(String[] args) {
-        AmountToWord convert = new BurmeseAmountToWord(12345678);
-        System.out.println(convert.convert());
+    public static void main(String[] args) throws Exception {
+        String result = AmountToWord.convertTo( 123456780, AmountConvertion.BURMESE);
+        System.out.println(result);
     }
 }
