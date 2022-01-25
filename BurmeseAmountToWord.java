@@ -43,15 +43,14 @@ public class BurmeseAmountToWord implements AmountToWord{
 
     @Override
     public String convert() {
-        System.out.println(amount.toString());
         String amtString = amount.toString();
-        String theinAmt = amtString.substring(amtString.length() < 6 ? 0 : amtString.length() - 6);
+        String firstTheinAmt = amtString.substring(0, amtString.length() - 5);
+        String lastTheinAmt = amtString.substring(amtString.length() < 6 ? 0 : amtString.length() - 6);
         String result = "";
 
-        System.out.println("============");
-
-        result = convertThein(theinAmt);
-        result = result + theinAmt.charAt(theinAmt.length() - 1) + "ကျပ်";
+        result = convertThein(lastTheinAmt);
+        result = convertThein(firstTheinAmt) + result;
+        result = result + lastTheinAmt.charAt(lastTheinAmt.length() - 1) + "ကျပ်";
         return result;
     }
 
@@ -59,6 +58,9 @@ public class BurmeseAmountToWord implements AmountToWord{
         String result = "";
         for (int i = 0; i < theinAmt.length() - 1; i++){
             result = result + theinAmt.charAt(i) + unit[theinAmt.length() - i - 1];
+            if(i == theinAmt.length() - 2) {
+                result = result + "့";
+            }
         }
         return result;
     }
