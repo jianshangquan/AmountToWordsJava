@@ -13,6 +13,6 @@ Convert amount in letter.
 Java: https://github.com/jianshangquan/AmountToWordsJava \
 Javascript: https://github.com/jianshangquan/AmountToWordsJavascript \
 Dart: https://github.com/jianshangquan/AmountToWordsDart \
-Rust: https://github.com/jianshangquan/AmountToWordsRust \
+Rust: https://github.com/jianshangquan/AmountToWordsRust
 
 
