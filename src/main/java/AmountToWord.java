@@ -7,7 +7,7 @@ abstract class AmountToWord {
 
     }
 
-    static AmountToWord getConverter(AmountConvertion convertion) throws Exception{
+    static AmountToWord getConverter(AmountConversion convertion) throws Exception{
         switch (convertion){
             case BURMESE: {
                 return new BurmeseAmountToWord();
@@ -24,24 +24,24 @@ abstract class AmountToWord {
         }
     }
 
-    static AmountToWord getConverter(int amt, AmountConvertion convertion) throws Exception{
+    static AmountToWord getConverter(int amt, AmountConversion convertion) throws Exception{
         return getConverter(convertion).setAmount(amt);
     }
-    static AmountToWord getConverter(double amt, AmountConvertion convertion) throws Exception{
+    static AmountToWord getConverter(double amt, AmountConversion convertion) throws Exception{
         return getConverter(convertion).setAmount(amt);
     }
-    static AmountToWord getConverter(BigDecimal amt, AmountConvertion convertion) throws Exception{
+    static AmountToWord getConverter(BigDecimal amt, AmountConversion convertion) throws Exception{
         return getConverter(convertion).setAmount(amt);
     }
 
 
-    static String convertTo(int amt, AmountConvertion convertion) throws Exception{
+    static String convertTo(int amt, AmountConversion convertion) throws Exception{
         return getConverter(convertion).setAmount(amt).convertInLetter();
     }
-    static String convertTo(double amt, AmountConvertion convertion) throws Exception{
+    static String convertTo(double amt, AmountConversion convertion) throws Exception{
         return getConverter(convertion).setAmount(amt).convertInLetter();
     }
-    static String convertTo(BigDecimal amt, AmountConvertion convertion) throws Exception{
+    static String convertTo(BigDecimal amt, AmountConversion convertion) throws Exception{
         return getConverter(convertion).setAmount(amt).convertInLetter();
     }
 
@@ -62,7 +62,7 @@ abstract class AmountToWord {
     abstract String convertInLetter();
 }
 
-enum AmountConvertion{
+enum AmountConversion {
     BURMESE,
     CHINESE,
     ENGLISH
