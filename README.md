@@ -1,6 +1,6 @@
 # Amount to words
 
-Convert amount in letter
+Convert amount in letter. Currently this repository support only burmese
 
 ```java
     String result = AmountToWord.convertTo( 123456789, AmountConversion.BURMESE);
