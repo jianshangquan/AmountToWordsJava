@@ -1,6 +1,3 @@
-package com.jiantech.AmountToWords;
-
-
 public class EnglishAmountToWord extends AmountToWord{
     public static final String[] unit = {"", "", "Hundred", "Thousand"};
     public static final String[] twentiesUnit = {
@@ -29,6 +26,7 @@ public class EnglishAmountToWord extends AmountToWord{
 
     @Override
     String convert() {
+        // TODO: Implement english word
         return null;
     }
 

@@ -1,5 +1,3 @@
-package com.jiantech.AmountToWords;
-
 import java.math.BigDecimal;
 
 public class ChineseAmountToWord extends AmountToWord{
@@ -17,6 +15,7 @@ public class ChineseAmountToWord extends AmountToWord{
 
     @Override
     public String convert() {
+        // TODO: implement chinese word
         return null;
     }
 

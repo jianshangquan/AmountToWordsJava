@@ -1,5 +1,3 @@
-package com.jiantech.AmountToWords;
-
 import java.math.BigDecimal;
 
 public class BurmeseAmountToWord extends AmountToWord{
