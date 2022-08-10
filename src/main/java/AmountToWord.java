@@ -58,8 +58,9 @@ abstract class AmountToWord {
         amount = amt;
         return this;
     }
-    abstract String convert();
-    abstract String convertInLetter();
+    abstract String convert() throws Exception;
+    abstract String convertInLetter() throws Exception;
+    abstract boolean isValidAmount(BigDecimal amt);
 }
 
 enum AmountConversion {

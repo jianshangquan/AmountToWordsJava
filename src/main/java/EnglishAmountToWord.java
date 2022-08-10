@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 public class EnglishAmountToWord extends AmountToWord{
     public static final String[] unit = {"", "", "Hundred", "Thousand"};
     public static final String[] twentiesUnit = {
@@ -33,5 +35,10 @@ public class EnglishAmountToWord extends AmountToWord{
     @Override
     String convertInLetter() {
         return null;
+    }
+
+    @Override
+    boolean isValidAmount(BigDecimal amt) {
+        return false;
     }
 }

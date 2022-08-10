@@ -23,4 +23,9 @@ public class ChineseAmountToWord extends AmountToWord{
     public String convertInLetter() {
         return null;
     }
+
+    @Override
+    boolean isValidAmount(BigDecimal amt) {
+        return false;
+    }
 }

@@ -5,6 +5,8 @@ public class BurmeseAmountToWord extends AmountToWord{
     public static final String[] numbers = {"၁", "၂", "၃", "၄", "၅", "၆", "၇", "၈", "၉", "၀"};
     public static final String[] words = {"တစ်", "နှစ်", "သုံး", "လေး", "ငါး", "ခြှောက်", "ခုနှစ်", "ရှစ်", "ကိုး", "သုံည"};
 
+    public static final BigDecimal maxConvertableAmount = new BigDecimal("10000000000000");
+
     BurmeseAmountToWord(){
         amount = new BigDecimal(0);
     }
@@ -22,7 +24,11 @@ public class BurmeseAmountToWord extends AmountToWord{
     }
 
     @Override
-    public String convert() {
+    public String convert() throws Exception {
+        if(isValidAmount(amount)) {
+            throw new Exception("Convert burmese amount must be lower than " + maxConvertableAmount);
+        }
+
         String amtString = amount.toString();
         String firstTheinAmt = amtString.length() > 5 ? amtString.substring(0, amtString.length() - 5) : "";
         String lastTheinAmt = amtString.substring(amtString.length() < 6 ? 0 : amtString.length() - 6);
@@ -30,7 +36,7 @@ public class BurmeseAmountToWord extends AmountToWord{
 
         result = convertThein(lastTheinAmt);
         if(firstTheinAmt.length() != 0){
-            result = convertThein(firstTheinAmt) + result;
+            result = convertThein(firstTheinAmt) + (result.length() == 0 ? "သိန်း" : "") + result;
         }
         result = result + ((lastTheinAmt.charAt(lastTheinAmt.length() - 1) != '0') ? lastTheinAmt.charAt(lastTheinAmt.length() - 1) : "") + "ကျပ်";
 
@@ -39,7 +45,7 @@ public class BurmeseAmountToWord extends AmountToWord{
 
 
     @Override
-    public String convertInLetter() {
+    public String convertInLetter() throws Exception {
         String result = convert();
         for (int i = 0; i < 10; i++){
             result = result.replaceAll(Integer.toString(i + 1), words[i]);
@@ -47,7 +53,7 @@ public class BurmeseAmountToWord extends AmountToWord{
         return result;
     }
 
-    public String convertInNumber(){
+    public String convertInNumber() throws Exception {
         String result = convert();
         for (int i = 0; i < 10; i++){
             result = result.replaceAll(Integer.toString(i + 1), numbers[i]);
@@ -66,6 +72,12 @@ public class BurmeseAmountToWord extends AmountToWord{
             }
         }
         return result;
+    }
+
+    @Override
+    boolean isValidAmount(BigDecimal amt) {
+        int cmp = amt.compareTo(maxConvertableAmount);
+        return cmp == 1 || cmp == 0 ;
     }
 }
 
