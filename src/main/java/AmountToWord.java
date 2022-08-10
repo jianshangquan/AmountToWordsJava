@@ -7,8 +7,8 @@ abstract class AmountToWord {
 
     }
 
-    static AmountToWord getConverter(AmountConversion convertion) throws Exception{
-        switch (convertion){
+    static AmountToWord getConverter(AmountConversion conversion) throws Exception{
+        switch (conversion){
             case BURMESE: {
                 return new BurmeseAmountToWord();
             }
@@ -24,25 +24,25 @@ abstract class AmountToWord {
         }
     }
 
-    static AmountToWord getConverter(int amt, AmountConversion convertion) throws Exception{
-        return getConverter(convertion).setAmount(amt);
+    static AmountToWord getConverter(int amt, AmountConversion conversion) throws Exception{
+        return getConverter(conversion).setAmount(amt);
     }
-    static AmountToWord getConverter(double amt, AmountConversion convertion) throws Exception{
-        return getConverter(convertion).setAmount(amt);
+    static AmountToWord getConverter(double amt, AmountConversion conversion) throws Exception{
+        return getConverter(conversion).setAmount(amt);
     }
-    static AmountToWord getConverter(BigDecimal amt, AmountConversion convertion) throws Exception{
-        return getConverter(convertion).setAmount(amt);
+    static AmountToWord getConverter(BigDecimal amt, AmountConversion conversion) throws Exception{
+        return getConverter(conversion).setAmount(amt);
     }
 
 
-    static String convertTo(int amt, AmountConversion convertion) throws Exception{
-        return getConverter(convertion).setAmount(amt).convertInLetter();
+    static String convertTo(int amt, AmountConversion conversion) throws Exception{
+        return getConverter(conversion).setAmount(amt).convertInLetter();
     }
-    static String convertTo(double amt, AmountConversion convertion) throws Exception{
-        return getConverter(convertion).setAmount(amt).convertInLetter();
+    static String convertTo(double amt, AmountConversion conversion) throws Exception{
+        return getConverter(conversion).setAmount(amt).convertInLetter();
     }
-    static String convertTo(BigDecimal amt, AmountConversion convertion) throws Exception{
-        return getConverter(convertion).setAmount(amt).convertInLetter();
+    static String convertTo(BigDecimal amt, AmountConversion conversion) throws Exception{
+        return getConverter(conversion).setAmount(amt).convertInLetter();
     }
 
 
